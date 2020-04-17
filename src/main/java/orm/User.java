@@ -1,9 +1,12 @@
 package orm;
 
+import java.util.List;
+
 public class User {
     private String id;
     private String username;
     private String address;
+    private List<String> favorites;
 
     @Override
     public String toString() {
@@ -36,5 +39,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<String> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<String> favorites) {
+        this.favorites = favorites;
     }
 }

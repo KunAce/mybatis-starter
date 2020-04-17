@@ -9,6 +9,8 @@ public interface UserMapper {
 
     Integer addUser2(User user);
 
+    Integer addUser3(User user);
+
     Integer deleteUserById(String id);
 
     Integer updateUser(User user);

@@ -19,6 +19,13 @@
     INSERT INTO user (id, username,address) VALUES (#{id},#{username}, #{address});
     </insert>
 
+    <insert id="addUser3" parameterType="user">
+        <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+            SELECT uuid();
+        </selectKey>
+        INSERT INTO user (id, username,address,favorites) VALUES (#{id}, #{username},#{address},#{favorites,typeHandler=orm.List2VarcharHandler});
+    </insert>
+
     <delete id="deleteUserById" parameterType="string">
         DELETE FROM user WHERE id=#{id};
     </delete>

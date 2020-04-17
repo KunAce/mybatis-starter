@@ -10,6 +10,9 @@
     <typeAliases>
         <package name="orm"/>
     </typeAliases>
+    <typeHandlers>
+        <package name="orm"/>
+    </typeHandlers>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
