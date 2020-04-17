@@ -51,7 +51,7 @@ public class Main {
 //          sqlSession.close();
 
 //        6) Read
-        List<User> list = sqlSession.selectList("mymapper.getAllUser");
+        List<User> list = sqlSession.selectList("orm.UserMapper.getAllUser");
         System.out.println(list);
         sqlSession.commit();
         sqlSession.close();

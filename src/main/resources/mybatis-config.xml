@@ -14,8 +14,11 @@
             </dataSource>
         </environment>
     </environments>
+<!--    <mappers>-->
+<!--        <mapper resource="UserMapper.xml" />-->
+<!--    </mappers>-->
     <mappers>
-        <mapper resource="UserMapper.xml" />
+        <package name="orm"/>
     </mappers>
 </configuration>
         
