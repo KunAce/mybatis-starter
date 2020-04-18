@@ -13,15 +13,15 @@ public class Main {
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
         SqlSession sqlSession = factory.openSession();
         // 1) SELECT
-//        User user = (User) sqlSession.selectOne("mymapper.getUserById",2);
-//        System.out.println(user);
-//        sqlSession.close();
+        User user = (User) sqlSession.selectOne("orm.UserMapper.getUserById",2);
+        System.out.println(user);
+        sqlSession.close();
 
         // 2) INSERT
 //        User user = new User();
 //        user.setUsername("Boy1");
 //        user.setAddress("New York");
-//        int insert = sqlSession.insert("mymapper.addUser",user);
+//        int insert = sqlSession.insert("orm.UserMapper.addUser",user);
 //        System.out.println(insert);
 //        sqlSession.commit();
 //        sqlSession.close();
@@ -30,13 +30,13 @@ public class Main {
 //        User user = new User();
 //        user.setUsername("Boy2");
 //        user.setAddress("Washington");
-//        int insert = sqlSession.insert("mymapper.addUser2", user);
+//        int insert = sqlSession.insert("orm.UserMapper.addUser2", user);
 //        System.out.println(insert);
 //        sqlSession.commit();
 //        sqlSession.close();
 
 //        4) DELETE
-//        int delete = sqlSession.delete("mymapper.deleteUserById","f093a8a8-7fb6-11ea-aa50-000c297bf035");
+//        int delete = sqlSession.delete("orm.UserMapper.deleteUserById","f093a8a8-7fb6-11ea-aa50-000c297bf035");
 //        System.out.println(delete);
 //        sqlSession.commit();
 //        sqlSession.close();
@@ -45,16 +45,17 @@ public class Main {
 //          User user = new User();
 //          user.setId("3");
 //          user.setUsername("new-username");
-//          int update = sqlSession.update("mymapper.updateUser", user);
+//          int update = sqlSession.update("orm.UserMapper.updateUser", user);
 //          System.out.println(update);
 //          sqlSession.commit();
 //          sqlSession.close();
 
 //        6) Read
-        List<User> list = sqlSession.selectList("orm.UserMapper.getAllUser");
-        System.out.println(list);
-        sqlSession.commit();
-        sqlSession.close();
+//        List<User> list = sqlSession.selectList("orm.UserMapper.getAllUser");
+//        System.out.println(list);
+//        sqlSession.commit();
+//        sqlSession.close();
+
 
     }
 }

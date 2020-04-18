@@ -38,4 +38,8 @@
         SELECT * FROM user;
     </select>
 
+    <select id="getAllUserByOrder" resultType="user">
+        SELECT * FROM user ORDER BY ${orderBy};
+    </select>
+
 </mapper>
