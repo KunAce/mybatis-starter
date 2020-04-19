@@ -42,4 +42,22 @@
         SELECT * FROM user ORDER BY ${orderBy};
     </select>
 
+    <update id="updateUsernameById">
+        UPDATE user SET username = #{username} WHERE id = #{id};
+    </update>
+    
+    <insert id="addUser4" parameterType="user">
+        INSERT INTO user (username,address,favorites) VALUES (#{user.username},#{user.address},#{user.favorites,typeHandler=orm.List2VarcharHandler});
+    </insert>
+
+    <resultMap id="MyResultMap" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username" />
+        <result column="address" property="address" />
+    </resultMap>
+    
+    <select id="getUserByIdMap" resultMap="MyResultMap">
+        SELECT * FROM user WHERE id=#{id};
+    </select>
+
 </mapper>

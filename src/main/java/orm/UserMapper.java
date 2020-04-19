@@ -1,5 +1,7 @@
 package orm;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -18,6 +20,12 @@ public interface UserMapper {
     List<User> getAllUser();
 
     List<User> getAllUserByOrder(String orderBy);
+
+    Integer updateUsernameById(@Param("username") String username,@Param("id") String id);
+
+    Integer addUser4(@Param("user") User user);
+
+    User getUserByIdMap(String id);
 
 }
 
