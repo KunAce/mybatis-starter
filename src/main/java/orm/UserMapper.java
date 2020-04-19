@@ -27,5 +27,13 @@ public interface UserMapper {
 
     User getUserByIdMap(String id);
 
+    List<User> getUserByPage(@Param("start") Integer start, @Param("count") Integer count);
+
+    List<User> getUserByUsernameAndId(@Param("id") String id, @Param("name") String name);
+
+    List<User> getUserByIds(@Param("ids") String[] ids);
+
+    Integer batchInsertUser(@Param("users") List<User> users);
+
 }
 

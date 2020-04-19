@@ -31,7 +31,19 @@
     </delete>
 
     <update id="updateUser" parameterType="user">
-        UPDATE user SET username = #{username} WHERE id = #{id};
+        UPDATE user
+        <set>
+            <if test="username!=null">
+                username = #{username},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+            <if test="favorites!=null">
+                favorites=#{favorites},
+            </if>
+        </set>
+        WHERE id = #{id};
     </update>
 
     <select id="getAllUser" resultType="user">
@@ -59,5 +71,44 @@
     <select id="getUserByIdMap" resultMap="MyResultMap">
         SELECT * FROM user WHERE id=#{id};
     </select>
+
+    <select id="getUserByPage" resultType="user">
+        SELECT * FROM user
+        <if test="start != null and count != null">
+            limit #{start},#{count}
+        </if>
+    </select>
+
+    <select id="getUserByUsernameAndId" resultType="user">
+        SELECT * FROM user
+        <where>
+            <if test="id!=null">
+                AND id>#{id}
+            </if>
+            <if test="name!=null">
+                AND username like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getUserByIds" resultType="user">
+        SELECT <include refid="Base_Column"/> FROM user WHERE id in
+        <foreach collection="ids" open="(" close=")" item = "id" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <insert id="batchInsertUser">
+        INSERT INTO user (id,username,address) VALUES
+        <foreach collection="users" separator="," item="user">
+            (#{user.id}, #{user.username},#{user.address})
+        </foreach>
+    </insert>
+
+    <sql id="Base_Column">
+        id,username,address
+    </sql>
+
+
 
 </mapper>
