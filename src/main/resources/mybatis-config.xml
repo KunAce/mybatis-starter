@@ -2,11 +2,17 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
+
     <properties resource="db.properties"></properties>
 <!--    <typeAliases>-->
 <!--        <typeAlias type="orm.User" alias="javaUser" />-->
 <!--    </typeAliases>-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <package name="orm"/>
     </typeAliases>
@@ -29,6 +35,8 @@
 <!--    </mappers>-->
     <mappers>
         <package name="orm"/>
+        <package name="OrmBook"/>
     </mappers>
 </configuration>
+
         
